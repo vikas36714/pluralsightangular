@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "pluralsignt"
+    }
+  },
+  "defaultProject": "pluralsignt",
+  "cli": {
+    "analytics": "95f63b5c-5854-499a-bfdf-cf3622930af1"
+  }
 }
