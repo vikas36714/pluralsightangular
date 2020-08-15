@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-product-list',
@@ -45,8 +46,22 @@ export class ProductListComponent implements OnInit {
     "price": 500.50,
     "rating": 4.5,
     "imageUrl": "assets/images/img2.png"
+   },
+   {
+    "id": 3,
+    "name": "ss",
+    "code": 'ssz-484',
+    "releaseDate": "August-15-2020",
+    "description": "This is my Third Product",
+    "price": 200.50,
+    "rating": 3.2,
+    "imageUrl": "assets/images/img2.png"
    }
   ];
+
+  onRatingClicked(message: string): void{
+    this.pageTitle = 'Product List : '+ message;
+  }
 
   performFilter(filterBy: string): IProduct[] {
     filterBy = filterBy.toLocaleLowerCase();
@@ -56,7 +71,7 @@ export class ProductListComponent implements OnInit {
 
   constructor() { 
     this.filteredProducts = this.products;
-    this.listFilter = 'cart';
+    this.listFilter = '';
   }
 
   ngOnInit() {
