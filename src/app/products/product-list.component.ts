@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { ProductService } from './product.service';
+
 
 @Component({
   selector: 'app-product-list',
@@ -14,6 +15,22 @@ export class ProductListComponent implements OnInit {
   imageMargin: number = 2;
   showImage: boolean = false;
   _listFilter: string;
+  errorMessage: string;
+
+  filteredProducts: IProduct[];
+
+  products: IProduct[] = [];
+
+  constructor(private productService: ProductService) {  }
+
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe((res:IProduct[]) => {
+      this.products = res;
+      this.filteredProducts = this.products;
+    },
+    error => this.errorMessage = error
+    )
+  }
 
   get listFilter(): string{
     return this._listFilter;
@@ -23,41 +40,6 @@ export class ProductListComponent implements OnInit {
     this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
   }
 
-  filteredProducts: IProduct[];
-
-
-  products: IProduct[] = [
-   {
-    "id": 1,
-    "name": "Television",
-    "code": 'Abc-555',
-    "releaseDate": "August-14-2020",
-    "description": "This is my first Product",
-    "price": 400.0,
-    "rating": 5,
-    "imageUrl": "assets/images/img1.png"
-   },
-   {
-    "id": 2,
-    "name": "Freez",
-    "code": 'xyz-484',
-    "releaseDate": "August-14-2020",
-    "description": "This is my Second Product",
-    "price": 500.50,
-    "rating": 4.5,
-    "imageUrl": "assets/images/img2.png"
-   },
-   {
-    "id": 3,
-    "name": "ss",
-    "code": 'ssz-484',
-    "releaseDate": "August-15-2020",
-    "description": "This is my Third Product",
-    "price": 200.50,
-    "rating": 3.2,
-    "imageUrl": "assets/images/img2.png"
-   }
-  ];
 
   onRatingClicked(message: string): void{
     this.pageTitle = 'Product List : '+ message;
@@ -69,13 +51,6 @@ export class ProductListComponent implements OnInit {
     product.name.toLocaleLowerCase().indexOf(filterBy) !== -1 );
   }
 
-  constructor() { 
-    this.filteredProducts = this.products;
-    this.listFilter = '';
-  }
-
-  ngOnInit() {
-  }
 
   toggleImage(): void{
     this.showImage = !this.showImage;

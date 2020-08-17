@@ -1,0 +1,32 @@
+[
+    {
+     "id": 1,
+     "name": "Television",
+     "code": "Abc-555",
+     "releaseDate": "August-14-2020",
+     "description": "This is my first Product",
+     "price": 400.0,
+     "rating": 5,
+     "imageUrl": "assets/images/img1.png"
+    },
+    {
+     "id": 2,
+     "name": "Freez",
+     "code": "xyz-484",
+     "releaseDate": "August-14-2020",
+     "description": "This is my Second Product",
+     "price": 500.50,
+     "rating": 4.5,
+     "imageUrl": "assets/images/img2.png"
+    },
+    {
+     "id": 3,
+     "name": "ss",
+     "code": "ssz-484",
+     "releaseDate": "August-15-2020",
+     "description": "This is my Third Product",
+     "price": 200.50,
+     "rating": 3.2,
+     "imageUrl": "assets/images/img2.png"
+    }
+   ]
