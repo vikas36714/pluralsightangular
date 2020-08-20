@@ -3,26 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './products/product-list.component';
-import { FormsModule } from '@angular/forms';
-import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
-import { StarComponent } from './shared/star/star.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WelcomeComponent } from './home/welcome/welcome.component';
+import { ProductModule } from './products/product.module';
 
 @NgModule({
   declarations: [		
-    AppComponent,
-      ProductListComponent,
-      ConvertToSpacesPipe,
-      StarComponent,
+      AppComponent,
       WelcomeComponent
    ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    ProductModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
